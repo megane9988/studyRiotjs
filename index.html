@@ -16,7 +16,18 @@
       <newslist></newslist>
     </div>
     <script src="newslist.tag" type="riot/tag"></script>
+    <script src="superagent.js"></script>
     <script src="https://cdn.rawgit.com/riot/riot/master/riot+compiler.min.js"></script>
     <script src="data.js"></script>
+    <script>
+      var request = window.superagent;
+      request
+        .get('http://www.m-g-n.me/wp-json/wp/v2/posts')
+        .end(function(err, res){
+          console.log(res.text);//レスポンス
+          //レスポンスがJSONの場合
+          console.log(res.body);//ここにparse済みのオブジェクトが入る
+        });
+    </script>
   </body>
 </html>
