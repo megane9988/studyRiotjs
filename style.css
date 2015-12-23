@@ -1,0 +1,13 @@
+body{
+  background-color: #eee;
+}
+.container{
+  width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  -webkit-border-radius: 10px;
+          border-radius: 10px;
+  background-color: #FFF;
+  -webkit-box-shadow: 0 5px 2px #ccc;
+          box-shadow: 0 5px 2px #ccc;
+}
