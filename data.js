@@ -1,10 +1,16 @@
-riot.mount('newslist', {
-  title: 'What is New',
-  items: [
-    {title : 'demo1', date:'2015/12/23' , url : 'demo.html'},
-    {title : 'demo2', date:'2015/12/23' , url : 'demo2.html'},
-    {title : 'demo3', date:'2015/12/23' , url : 'demo3.html'},
-    {title : 'demo4', date:'2015/12/23' , url : 'demo4.html'},
-    {title : 'demo5', date:'2015/12/23' , url : 'demo5.html'}
-  ],
-});
+//superagetを読み込む
+var request = window.superagent;
+
+//get形式でapiを叩く
+request
+  .get('http://www.m-g-n.me/wp-json/wp/v2/posts')
+  //取得したデータをパースし、jsondataに代入
+  .end(function(err, res){
+    var jsondata = res.body;
+    //riotの独自タグ用のデータに格納
+    riot.mount('newslist', {
+      title: 'What is New',
+      items: jsondata,
+    });
+  });
+
