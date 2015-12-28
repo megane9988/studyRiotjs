@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/megane9988/studyRiotjs/issues"
   },
-  "homepage": "https://github.com/megane9988/studyRiotjs#readme"
+  "homepage": "https://github.com/megane9988/studyRiotjs#readme",
+  "devDependencies": {
+    "superagent": "^1.6.1"
+  }
 }
