@@ -1,5 +1,4 @@
-//superagetを読み込む
-var request = window.superagent;
+var request = require('superagent');
 
 //get形式でapiを叩く
 request
