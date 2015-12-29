@@ -1427,13 +1427,14 @@ request
 });
 
 // コメントの送信
-var posturl = '/wp-json/wp/v2/comments';
+var posturl = 'http://www.m-g-n.me/wp-json/wp/v2/comments';
 request
   .post( posturl )
-  .send({ author_name: 'megane' })
-  .send({ author_email: 'megane@mgena.co.jp' })
+  .withCredentials()
+  .send({ author_name: 'megewokfwjfwjdewewweqdwane99wifefuewhfuwh88' })
+  .send({ author_email: 'megaedceeweawwne@mgdewdena.co.jp' })
   .send({ post: '2460' })
-  .send({ content: 'megane' })
+  .send({ content: 'テストだおmeeewajdwiejdiewwdijweidjiddwidweegane<br>ewjdwew' })
   .end(function(err, res){
     console.log(res.body);
 });
