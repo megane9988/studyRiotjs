@@ -5,6 +5,7 @@
     font-size: 1.5em;
     -webkit-border-radius: 5px;
             border-radius: 5px;
+    border: 1px solid #ccc;
   }
   </style>
   <h3>{ opts.title }</h3>
