@@ -1,35 +1,4 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
-var request = require('superagent');
-
-//get形式でapiを叩く
-request
-  .get('http://www.m-g-n.me/wp-json/wp/v2/posts')
-  //取得したデータをパースし、recentpostdataに代入
-  .end(function(err, res){
-    var recentpostdata = res.body;
-    //riotの独自タグ用のデータに格納
-    riot.mount('newslist', {
-      title: 'What is New',
-      items: recentpostdata,
-    });
-  });
-
-request
-  .get('http://www.m-g-n.me/wp-json/wp/v2/comments')
-  //取得したデータをパースし、recentcommentdataに代入
-  .end(function(err, res){
-    var recentcommentdata = res.body;
-    //riotの独自タグ用のデータに格納
-    riot.mount('commentlist', {
-      title: '最新のコメント',
-      items: recentcommentdata,
-    });
-  });
-
-  riot.mount('commentform', {
-    title: 'コメントフォーム',
-  });
-},{"superagent":4}],2:[function(require,module,exports){
 
 /**
  * Expose `Emitter`.
@@ -195,7 +164,7 @@ Emitter.prototype.hasListeners = function(event){
   return !! this.listeners(event).length;
 };
 
-},{}],3:[function(require,module,exports){
+},{}],2:[function(require,module,exports){
 
 /**
  * Reduce `arr` with `fn`.
@@ -220,7 +189,7 @@ module.exports = function(arr, fn, initial){
   
   return curr;
 };
-},{}],4:[function(require,module,exports){
+},{}],3:[function(require,module,exports){
 /**
  * Module dependencies.
  */
@@ -1423,4 +1392,49 @@ request.put = function(url, data, fn){
 
 module.exports = request;
 
-},{"emitter":2,"reduce":3}]},{},[1]);
+},{"emitter":1,"reduce":2}],4:[function(require,module,exports){
+var request = require('superagent');
+
+
+//最新の投稿の取得
+request
+  .get('http://www.m-g-n.me/wp-json/wp/v2/posts')
+  //取得したデータをパースし、recentpostdataに代入
+  .end(function(err, res){
+    var recentpostdata = res.body;
+    //riotの独自タグ用のデータに格納
+    riot.mount('newslist', {
+      title: 'What is New',
+      items: recentpostdata,
+    });
+  });
+
+//最新のコメントの取得
+request
+  .get('http://www.m-g-n.me/wp-json/wp/v2/comments')
+  //取得したデータをパースし、recentcommentdataに代入
+  .end(function(err, res){
+    var recentcommentdata = res.body;
+    //riotの独自タグ用のデータに格納
+    riot.mount('commentlist', {
+      title: '最新のコメント',
+      items: recentcommentdata,
+    });
+  });
+
+  riot.mount('commentform', {
+    title: 'コメントフォーム',
+});
+
+// コメントの送信
+var posturl = '/wp-json/wp/v2/comments';
+request
+  .post( posturl )
+  .send({ author_name: 'megane' })
+  .send({ author_email: 'megane@mgena.co.jp' })
+  .send({ post: '2460' })
+  .send({ content: 'megane' })
+  .end(function(err, res){
+    console.log(res.body);
+});
+},{"superagent":3}]},{},[4]);
