@@ -1,0 +1,48 @@
+<!doctype html>
+
+<html>
+  <head>
+    <title>Riot lesson</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <style type="riot"></style>
+    <link rel="stylesheet" href="src/css/style.css">
+    <!--[if lt IE 9]>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/es5-shim/4.0.5/es5-shim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script>html5.addElements('todo')</script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="container">
+      <todo></todo>
+      <hr>
+      <account></account>
+      <hr>
+      <login></login>
+    </div>
+    <!-- ライオットをいれる -->
+    <script src="src/js/riot+compiler.min.js"></script>
+    <!-- タグのファイルを読み込む -->
+    <script src="src/tags/account.tag" type="riot/tag"></script>
+    <script src="src/tags/todo.tag" type="riot/tag"></script>
+    <script src="src/tags/login.tag" type="riot/tag"></script>
+    <!-- タグをマウントする -->
+    <script>
+    riot.mount('todo', {
+      title: 'たいとるだお',
+      content:'それは事実とにかくこの意味めというものの日にあらるで。よし当時を換言ごともとうとうこの専攻なでほどにするがみませをも相当なれますますて、始終には連れだたなな。がたのなるうのもあに今朝がいったいですうま'
+    });
+    riot.mount('account', {
+      plan:{
+        name: 'ヨシハル',
+        term:'月刊誌',
+        plan:{
+          name: 'はじめ',
+          term:'月刊誌'
+        }
+      }
+    });
+    riot.mount('login');
+    </script>
+  </body>
+</html>
