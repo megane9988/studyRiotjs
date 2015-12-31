@@ -27,19 +27,8 @@ request
     });
   });
 
-  riot.mount('commentform', {
-    title: 'コメントフォーム',
-});
+var request = require('superagent');
 
-// コメントの送信
-var posturl = 'http://www.m-g-n.me/wp-json/wp/v2/comments';
-request
-  .post( posturl )
-  .withCredentials()
-  .send({ author_name: 'megewokfwjfwjdewewweqdwane99wifefuewhfuwh88' })
-  .send({ author_email: 'megaedceeweawwne@mgdewdena.co.jp' })
-  .send({ post: '2460' })
-  .send({ content: 'テストだおmeeewajdwiejdiewwdijweidjiddwidweegane<br>ewjdwew' })
-  .end(function(err, res){
-    console.log(res.body);
+riot.mount('commentform', {
+    title: 'コメントフォーム',
 });
